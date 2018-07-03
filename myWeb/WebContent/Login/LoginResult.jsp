@@ -10,7 +10,7 @@
 	<div align="center">
 		<%=msg %><br>
 		<%if(check) {%>
-			<a href="">MyPage | Logout
+			<a href="/myWeb/Mypage/Mypage.jsp">MyPage</a> | <a href = "/myWeb/Login/Logout.jsp">Logout</a>
 		<%}else { %>
 			아이디/비밀번호찾기
 		<%} %>

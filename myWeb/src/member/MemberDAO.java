@@ -16,8 +16,9 @@ public class MemberDAO {
 	Connection con = null;
 	PreparedStatement ps = null;
 	private ResultSet rs;
-	private static DataSource ds;
 	
+	//커넥션 풀
+/*	private static DataSource ds;	
 	static {
 		try {
 			Context context = new InitialContext();
@@ -25,9 +26,9 @@ public class MemberDAO {
 		}catch (NamingException e) {
 			e.printStackTrace();
 		}		
-	}
+	}*/
 	
-/*	public MemberDAO() {
+	public MemberDAO() {
 	//db연결
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -54,14 +55,14 @@ public class MemberDAO {
 		return con;
 		
 	}//getConnection() end
-*/	
+	
 	public boolean insert(MemberDTO dto) {
 		boolean check = false;
 		
 		String sql = "insert into member01 values(member01_seq.nextval,?,?,?,?,?,?,?)";
 		
 		try {
-			con = ds.getConnection();
+			con = this.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, dto.getId());
 			ps.setString(2, dto.getPassword());
@@ -93,7 +94,7 @@ public class MemberDAO {
 		String name = null;
 		
 		try {
-			con = ds.getConnection();
+			con = this.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, dto.getId());
 			ps.setString(2, dto.getPassword());
@@ -123,7 +124,7 @@ public class MemberDAO {
 		String sql = "SELECT no, name, id, email, tel1, tel2, tel3 FROM member01 where id=?";
 		
 		try {
-			con = ds.getConnection();
+			con = this.getConnection();
 			ps = con.prepareStatement(sql);			
 			ps.setString(1, id);
 			rs = ps.executeQuery();
@@ -152,5 +153,67 @@ public class MemberDAO {
 		}	
 		return dto;			
 	}//select() end
+	
+	public boolean delete(String id) {
+		
+		String sql = "DELETE FROM member01 WHERE id = ?";
+		
+		boolean check = false;
+		
+		try {
+			con = this.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			System.out.println(id);
+			if(ps.executeUpdate() != 0) {
+				check = true;
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(ps != null) ps.close();
+				if(con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return check;
+		
+	}//delete() end
+	
+	public int updateMember(MemberDTO dto) {
+		
+		String sql = "UPDATE member01 SET password = ?, name = ?, email = ?,tel1 = ?,tel2 = ?,tel3 = ? where no = ?";
+			
+		int su = 0;
+		
+		try {
+			con = this.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, dto.getPassword());
+			ps.setString(2, dto.getName());
+			ps.setString(3, dto.getEmail());
+			ps.setString(4, dto.getTel1());
+			ps.setString(5, dto.getTel2());
+			ps.setString(6, dto.getTel3());
+			ps.setInt(7, dto.getNo());
+			su = ps.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(ps != null) ps.close();
+				if(con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return su;
+		
+	}//updateMember() end
+	
+	
 		
 }

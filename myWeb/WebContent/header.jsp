@@ -31,7 +31,7 @@ width: 800px; margin: 0 auto;
 				<a href = "/myWeb/Login/LoginForm.jsp">Login</a> | 
 				<a href = "/myWeb/Member/JoinForm.jsp">Join</a> | 
 			<%} %>
-			Board | 
+				<a href = "/myWeb/Board/BoardList.jsp">Board</a> | 
 			<a href = "/myWeb/index.jsp">Home</a> 
 			
 			<!-- <a href = "/myWeb/Login/Logout.jsp">Logout</a> | <a href = "/myWeb/Login/LoginForm.jsp">Login</a> | <a href = "/myWeb/Member/JoinForm.jsp">Join</a> | <a href = "/myWeb/index.jsp">Home</a>  -->
