@@ -2,13 +2,16 @@ package board;
 
 public class BoardDTO {
 	
-	private int seq;
-	private String id;
-	private String name;
-	private String title;
-	private String content;
-	private int hit;
-	private String logtime;
+	private int seq;					// 글번호
+	private String id;				// id
+	private String name;			// 작성자
+	private String title;				//제목
+	private String content;		//내용
+	private String passwd;		//비밀번호
+	private int hit;					//조회수
+	private String logtime;		//작성일
+	private int grpno;				//글 그룹번호
+	private int ansnum;			//글순서
 	
 			
 	public BoardDTO() {
@@ -44,6 +47,15 @@ public class BoardDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	
+	public String getPasswd() {
+		return passwd;
+	}
+
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
+	}
+
 	public int getHit() {
 		return hit;
 	}
@@ -56,6 +68,23 @@ public class BoardDTO {
 	public void setLogtime(String logtime) {
 		this.logtime = logtime;
 	}
+
+	public int getGrpno() {
+		return grpno;
+	}
+
+	public void setGrpno(int grpno) {
+		this.grpno = grpno;
+	}
+
+	public int getAnsnum() {
+		return ansnum;
+	}
+
+	public void setAnsnum(int ansnum) {
+		this.ansnum = ansnum;
+	}
+	
 	
 	
 

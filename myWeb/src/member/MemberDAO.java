@@ -41,7 +41,7 @@ public class MemberDAO {
 	
 	private Connection getConnection() {
 		String urI = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "XIALK44";
+		String user = "sukwoo";
 		String password = "1234";
 					
 		try {
@@ -59,11 +59,14 @@ public class MemberDAO {
 	public boolean insert(MemberDTO dto) {
 		boolean check = false;
 		
-		String sql = "insert into member01 values(member01_seq.nextval,?,?,?,?,?,?,?)";
+		StringBuilder sql = null;
+		sql = new StringBuilder();
+		sql.append(" INSERT INTO board01(seq, id, name, title, content, passwd)");
+		sql.append(" VALUES(seq_seq.nextval,'id','name','title', 'content' ,1111)");
 		
 		try {
 			con = this.getConnection();
-			ps = con.prepareStatement(sql);
+			ps = con.prepareStatement(sql.toString());
 			ps.setString(1, dto.getId());
 			ps.setString(2, dto.getPassword());
 			ps.setString(3, dto.getName());

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8"%>    
 <%
  	String login = (String)session.getAttribute("login");	
 %>
@@ -17,6 +17,7 @@ width: 800px; margin: 0 auto;
 	overflow: hidden; text-align: center; margin-top: 35px; border: 1px solid; height: 550px;
 }
 </style>
+<script src="../Script/Script.js"></script>	<!-- 유효성검사 스크립트 -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Index.jsp</title>

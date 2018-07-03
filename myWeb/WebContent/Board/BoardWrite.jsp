@@ -2,19 +2,19 @@
 <%@include file="../header.jsp" %>
 <%@include file="../footer.jsp" %>
 
-<p><a href="bbsList.jsp">[글목록]</a></p>
 
-<form name="bbsfrm" method="post" action="bbsIns.jsp" onsubmit="return bbsCheck(this)" >
+
+<form name="boardfrm" method="post" action="BoardInsert.jsp" onsubmit="return boardCheck(this)" >
 <table style="margin: auto">
 <tr>
     <th>작성자</th>
     <td>
-    <input type="text" name="wname" size="10">
+    <input type="text" name="name" size="10">
     </td>
 </tr> 
 <tr>
     <th>제목</th>
-    <td><input type="text" name="subject" size="20"></td>
+    <td><input type="text" name="title" size="20"></td>
 </tr> 
 <tr>
     <th>내용</th>
@@ -30,6 +30,7 @@
     <td colspan="2" align="center">
       <input type="submit" value="쓰기">
       <input type="reset"  value="취소">
+      <input type="button" value="글목록" onclick="javascript:location.href='BoardList.jsp'">      
     </td>
 </tr> 
 </table>
